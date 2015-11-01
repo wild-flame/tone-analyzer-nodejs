@@ -5,8 +5,8 @@ declared-services:
     plan: experimental
 applications:
 - services:
-  - tone-analyzer-service-experimental
-  name: tone-analyzer-demo
+  - tone-analyzer-service
+  name: tone-analyzer-demo-wildflame
   command: node app.js
   path: .
   memory: 512MB
