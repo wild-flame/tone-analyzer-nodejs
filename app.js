@@ -29,6 +29,7 @@ var credentials = extend({
   version: 'v2',
   username: 'a0f5681f-3b06-4379-af43-d0694697ef6f',
   password: 'ey27bYyZDgD5',
+  url: 'https://gateway.watsonplatform.net/tone-analyzer-experimental/api'
 }, bluemix.getServiceCreds('tone_analyzer'));
 
 

@@ -68,9 +68,6 @@ $(document).ready(function() {
   var CURRENT_TONE = null; // current results
   var REPLACEABLE = null;
 
-  // set initial text
-  $text.val(SAMPLE_TEXT);
-
   function onAPIError(xhr) {
     var error;
     try {

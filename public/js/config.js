@@ -49,8 +49,41 @@ var COLOR_SCHEMA = {
   'distant': '#006d2c'
 };
 
-var SAMPLE_TEXT = '' + 'Hi Team, \n\n' +
-  'I know the times are difficult! Our sales have been disappointing for the past three quarters for our data analytics product suite. We have a competitive data analytics product suite in the industry. But we need to do our job selling it! \n\n' +
-  'We need to acknowledge and fix our sales challenges. We can’t blame the economy for our lack of execution! We are missing critical sales opportunities. Our product  is in no way inferior to the competitor products. Our clients are hungry for analytical tools to improve their business outcomes. Economy has nothing to do with it. In fact, it is in times such as this, our clients want to get the insights they need to turn their businesses around. Let’s buckle up and execute. \n\n' +
-  'In summary, we have a competitive product, and a hungry market. We have to do our job to close the deals.\n\n' +
-  'Jennifer Baker\n' + 'Sales Leader, North-East Geo,\n' + 'Data Analytics Inc.';
+var $text     = $('#textArea'),
+    $loading    = $('#loading'),
+    $analyzeBtn = $('.analyze-btn'),
+    $results    = $('.results'),
+    $jsonTab    = $('.json-div'),
+    $outputText = $('.text-output-div'),
+    $outputTextLabel = $('.text-output-label'),
+    $error      = $('.error'),
+    $errorMsg   = $('.errorMsg');
+
+function loadJoke() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // code for older browsers
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var data = JSON.parse(xmlhttp.responseText);
+            var SAMPLE_TEXT = data.value.joke;
+            var $text     = $('#textArea');
+            $text.val(SAMPLE_TEXT);
+            clickAnalyze();
+        }
+    }
+    xmlhttp.open("GET",'http://api.icndb.com/jokes/random?firstName=John&amp;lastName=Doe', true);
+    xmlhttp.send();
+}
+
+function clickAnalyze() {
+    document.getElementById("analyze-btn").click(); // Click on the checkbox
+}
+
+
+loadJoke();
+
